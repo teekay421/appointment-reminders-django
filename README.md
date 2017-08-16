@@ -12,7 +12,7 @@ Use Twilio to create automatic appointment reminders for your business's clients
 
 This project is preconfigured to run on [Heroku](https://www.heroku.com/). Deploy it now:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/atbaker/appointment-reminders-django)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/teekay421/appointment-reminders-django)
 
 To start the [Celery](http://docs.celeryproject.org/en/latest/index.html) worker process, which sends the SMS reminders asynchronously, you need to change a few settings in your Heroku dashboard:
 
