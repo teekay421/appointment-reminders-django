@@ -44,8 +44,11 @@ class Appointment(models.Model):
         reminder_time = appointment_time.replace(minutes=-settings.REMINDER_TIME)
 
         # Schedule the Celery task
-        from .tasks import send_sms_reminder
-        result = send_sms_reminder.apply_async((self.pk,), eta=reminder_time)
+        # from .tasks import send_sms_reminder
+        # result = send_sms_reminder.apply_async((self.pk,), eta=reminder_time)
+        
+        from .tasks import make_call
+        result = make_call.apply_async((self.pk,), eta=reminder_time)
 
         return result.id
 
