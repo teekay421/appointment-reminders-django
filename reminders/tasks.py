@@ -38,7 +38,12 @@ def send_sms_reminder(appointment_id):
     
 @shared_task
 def make_call(appointment_id):
-    
+    try:
+        appointment = Appointment.objects.get(pk=appointment_id)
+    except Appointment.DoesNotExist:
+        # The appointment we were trying to remind someone about
+        # has been deleted, so we don't need to do anything
+        return
     call = client.calls.create(to=appointment.phone_number,
                            from_=settings.TWILIO_NUMBER,
                            url="http://demo.twilio.com/docs/voice.xml")
