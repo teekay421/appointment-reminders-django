@@ -35,3 +35,13 @@ def send_sms_reminder(appointment_id):
         to=appointment.phone_number,
         from_=settings.TWILIO_NUMBER,
     )
+    
+@shared_task
+def make_call(appointment_id):
+    
+    call = client.calls.create(to=appointment.phone_number,
+                           from_=settings.TWILIO_NUMBER,
+                           url="http://demo.twilio.com/docs/voice.xml")
+
+
+
